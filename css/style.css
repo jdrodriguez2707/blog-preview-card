@@ -1,36 +1,161 @@
-/* @font-face {
-  font-family: 'Figtree Extra Bold';
-  src: url('../assets/fonts/static/Figtree-ExtraBold.ttf') format('truetype');
-  font-weight: 800;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'Figtree Medium';
-  src: url('../assets/fonts/static/Figtree-Medium.ttf') format('truetype');
-  font-weight: 700;
-  font-style: normal;
-} */
-
-@font-face {
-  font-family: 'Figtree';
-  src: url('../assets/fonts/Figtree-VariableFont_wght.ttf') format('truetype');
-  font-style: normal;
-}
-
 :root {
   /* Colors */
   --yellow: hsl(47, 88%, 63%);
   --gray-500: hsl(0, 0%, 42%);
   --gray-950: hsl(0, 0%, 7%);
   --white: hsl(0, 0%, 100%);
+  --base-font-size: 4vw; /* Base font size relative to viewport width */
+}
 
-  /* Font sizes */
-  --large-font-size: 2.4rem;
-  --medium-font-sie: 1.6rem;
-  --small-font-size: 1.4rem;
+/* Font presets */
+@font-face {
+  font-family: 'Figtree';
+  src: url('../assets/fonts/Figtree-VariableFont_wght.ttf') format('truetype');
+  font-style: normal;
+  font-optical-sizing: auto;
+}
+
+.figtree-extra-bold {
+  font-family: 'Figtree', serif;
+  font-weight: 800;
+  /* We use clamp to adapt the font size according to the screen size */
+  font-size: clamp(
+    2rem,
+    calc(var(--base-font-size) * 0.6),
+    2.4rem
+  ); /* Min 20px, preferred calc, max 24px */
+  line-height: 150%;
+  letter-spacing: 0;
+}
+
+.figtree-medium {
+  font-family: 'Figtree', serif;
+  font-weight: 500;
+  font-size: clamp(
+    1.4rem,
+    calc(var(--base-font-size) * 0.4),
+    1.6rem
+  ); /* Min 14px, preferred calc, max 16px */
+  line-height: 150%;
+  letter-spacing: 0;
+}
+
+.figtree-medium-small {
+  font-family: 'Figtree', serif;
+  font-weight: 500;
+  font-size: clamp(
+    1.2rem,
+    calc(var(--base-font-size) * 0.35),
+    1.4rem
+  ); /* Min 12px, preferred calc, max 14px */
+  line-height: 150%;
+  letter-spacing: 0;
+}
+
+.figtree-extra-bold-small {
+  font-family: 'Figtree', serif;
+  font-weight: 800;
+  font-size: clamp(
+    1.2rem,
+    calc(var(--base-font-size) * 0.35),
+    1.4rem
+  ); /* Min 12px, preferred calc, max 14px */
+  line-height: 150%;
+  letter-spacing: 0;
 }
 
 body {
+  display: grid;
+  place-items: center;
+  grid-template-rows: 1fr auto;
+  padding: 0 16px;
+  font-family: 'Figtree', serif;
   background-color: var(--yellow);
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 2.4rem;
+  padding: 2.4rem;
+  border: 1px solid var(--gray-950);
+  border-radius: 20px;
+  box-shadow: 8px 8px 0 0 #000;
+  width: 100%;
+  /* To adapt the card size according to the screen size */
+  max-width: clamp(
+    35.2rem,
+    38vw,
+    40rem
+  ); /* Min 352px, preferred 38vw, max 400px */
+  background-color: var(--white);
+}
+
+.card-illustration {
+  border-radius: inherit;
+  aspect-ratio: 112 / 67;
+}
+
+.article-header {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  margin-bottom: 1.2rem;
+}
+
+.tag {
+  align-self: flex-start;
+  padding: 0.4rem 1.2rem;
+  border-radius: 4px;
+  text-align: center;
+  color: var(--gray-950);
+  background-color: var(--yellow);
+}
+
+.publication-date {
+  color: var(--gray-950);
+}
+
+.article-title {
+  color: var(--gray-950);
+  cursor: pointer;
+  transition: 0.2s color;
+
+  &:hover {
+    color: var(--yellow);
+  }
+}
+
+.article-description {
+  text-wrap: wrap;
+  color: var(--gray-500);
+}
+
+.author-info {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+}
+
+.author-avatar {
+  width: 3.2rem;
+  height: 3.2rem;
+  max-width: 64px;
+  max-height: 65px;
+  aspect-ratio: 64 / 65;
+}
+
+.author {
+  font-size: 1.4rem;
+  color: var(--gray-950);
+}
+
+.attribution {
+  margin: 2rem 0;
+  text-align: center;
+}
+
+.attribution-link {
+  color: var(--gray-950);
+  font-weight: 800;
 }
