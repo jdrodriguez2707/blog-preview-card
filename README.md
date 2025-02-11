@@ -31,7 +31,7 @@ Users should be able to:
 
 ### Links
 
-- [Solution URL]()
+- [Solution URL](https://www.frontendmentor.io/solutions/responsive-blog-preview-card-VagF2F79PC)
 - [Live Site URL](https://jdrodriguez2707.github.io/blog-preview-card/)
 
 ## My process
